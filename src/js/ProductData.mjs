@@ -1,23 +1,23 @@
-function convertToJson(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error("Bad Response");
-  }
-}
-
-export default class ProductData {
-  constructor(category) {
-    this.category = category;
-    this.path = `../json/${this.category}.json`;
-  }
-  getData() {
-    return fetch(this.path)
-      .then(convertToJson)
-      .then((data) => data);
-  }
-  async findProductById(id) {
-    const products = await this.getData();
-    return products.find((item) => item.Id === id);
-  }
-}
+export const products = [
+  {
+    id: 1,
+    name: "Produto A",
+    price: 100.0,
+    image: "assets/images/produtoA.jpg",
+    description: "Descrição do Produto A",
+  },
+  {
+    id: 2,
+    name: "Produto B",
+    price: 150.0,
+    image: "assets/images/produtoB.jpg",
+    description: "Descrição do Produto B",
+  },
+  {
+    id: 3,
+    name: "Produto C",
+    price: 200.0,
+    image: "assets/images/produtoC.jpg",
+    description: "Descrição do Produto C",
+  },
+];
